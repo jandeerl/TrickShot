@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 public class AimingLine : MonoBehaviour, IEventSubscriber
 {
@@ -50,7 +49,7 @@ public class AimingLine : MonoBehaviour, IEventSubscriber
 
         line.SetPosition(line.positionCount - 1, lineCoordinates.endPosition);
 
-        //make the line wider the longer the line      
+        //make the line wider the longer it is    
         line.endWidth = DistanceFromInitialTouch;
         line.enabled = true;
     }

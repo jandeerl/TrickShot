@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class GoalObject : MonoBehaviour
@@ -7,15 +6,22 @@ public class GoalObject : MonoBehaviour
     [SerializeField]
     private Vector2[] positions;
 
-    [ContextMenu("Test")]
     public void MoveToRandomPosition()
     {
-        int num;
-        do 
-        {num = Random.Range(0, positions.Length);}
-        while 
-        ((Vector2)transform.position == positions[num]);
+        transform.position = RandomPositionFromArray(transform.position);
+    }
 
-        transform.position = positions[num];
+    private Vector2 RandomPositionFromArray(Vector2 currentPosition)
+    {
+        if(currentPosition != positions[0])
+        {
+            return positions[0];
+        }
+        else
+        {
+            Array.Reverse(positions);
+            int random = UnityEngine.Random.Range(0, positions.Length - 1);
+            return positions[random];
+        }
     }
 }

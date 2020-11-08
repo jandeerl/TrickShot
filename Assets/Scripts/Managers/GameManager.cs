@@ -1,7 +1,4 @@
-﻿using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour,IEventSubscriber
 {
@@ -12,10 +9,10 @@ public class GameManager : MonoBehaviour,IEventSubscriber
     [SerializeField]
     private GameObject goalPrefab;
 
-    private GameObject goalObject;
+    private GameObject _goalObject;
 
 
-    public int score = 0;
+    public int Score { get; private set; }
 
     private GoalObject goal;
 
@@ -25,15 +22,15 @@ public class GameManager : MonoBehaviour,IEventSubscriber
     }
     void IEventSubscriber.PerformUpdate(IEventPublisher publisher)
     {
-        score++;
+        Score++;
         goal.MoveToRandomPosition();
     }
 
     public void StartGame()
     {
         inputManager.enabled = true;
-        goalObject = Instantiate(goalPrefab);
-        goal = goalObject.GetComponent<GoalObject>();
+        _goalObject = Instantiate(goalPrefab);
+        goal = _goalObject.GetComponent<GoalObject>();
     }
 
 }
