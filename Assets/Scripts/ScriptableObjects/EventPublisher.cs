@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName ="EventPublisher_Object", menuName ="Scriptable Objects/Event Publisher")]
 public class EventPublisher : ScriptableObject, IEventPublisher

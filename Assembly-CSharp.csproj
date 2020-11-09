@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\GoalTrigger.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IEventPublisher.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IEventSubscriber.cs" />
-    <Compile Include="Assets\Scripts\MaintainWidth.cs" />
+    <Compile Include="Assets\Scripts\MaintainScreenWidth.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\PlayerBall.cs" />

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "LineCoordinates_Object", menuName = "Scriptable Objects/Line Coordinates")]
 public class LineCoordinates : ScriptableObject

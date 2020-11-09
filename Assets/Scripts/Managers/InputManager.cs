@@ -30,9 +30,7 @@ public class InputManager : MonoBehaviour
 
         }
         else
-        {
             ClickReleased();
-        }
     }
 
     private bool PressingDown

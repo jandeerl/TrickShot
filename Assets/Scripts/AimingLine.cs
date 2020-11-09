@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class AimingLine : MonoBehaviour, IEventSubscriber
 {
     [SerializeField, Range(0.5f, 2f)]
@@ -10,7 +9,7 @@ public class AimingLine : MonoBehaviour, IEventSubscriber
     [SerializeField]
     private EventPublisher onReleaseInput;
     [SerializeField]
-    LineCoordinates lineCoordinates;
+    private LineCoordinates lineCoordinates;
 
     private LineRenderer line;
 
