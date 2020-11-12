@@ -27,5 +27,6 @@ public class PlayerBall : MonoBehaviour, IEventSubscriber
        rb.AddForce(ShootingDirection * pushForce * 10);
     }
 
-    private Vector2 ShootingDirection => -(LineCoordinates.endPosition - LineCoordinates.startingPosition);
+    private Vector2 ShootingDirection =>
+        -(LineCoordinates.endPosition - LineCoordinates.startingPosition);
 }

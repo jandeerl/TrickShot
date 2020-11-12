@@ -4,20 +4,19 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private bool isUsingMouse = false;
-    [SerializeField]
-    private LineCoordinates lineCoordinates;
-    [SerializeField]
-    private EventPublisher onPressingDown;
-    [SerializeField]
-    private EventPublisher onReleaseInput;
+    private bool _isUsingMouse = true;
+    public LineCoordinates LineCoordinates { get; set; }
 
-    private Camera mainCamera;
-    private Action onClicked;
+    public EventPublisher OnPressingDown { get; set; }
+
+    public EventPublisher OnReleaseInput { get; set; }
+
+    private Camera _mainCamera;
+    private Action _onClicked;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -26,7 +25,7 @@ public class InputManager : MonoBehaviour
         {
             SetLineCoordinates();
             RegisterClick();
-            onPressingDown.Notify();
+            OnPressingDown.Notify();
 
         }
         else
@@ -37,7 +36,7 @@ public class InputManager : MonoBehaviour
     {
         get
         {
-            if (isUsingMouse)
+            if (_isUsingMouse)
             {
                 return Input.GetMouseButton(0);
             }
@@ -48,21 +47,21 @@ public class InputManager : MonoBehaviour
 
     private void RegisterClick()
     {
-        if (onClicked == null)
-            onClicked += onReleaseInput.Notify;
+        if (_onClicked == null)
+            _onClicked += OnReleaseInput.Notify;
     }
 
     private void ClickReleased()
     {
-        onClicked?.Invoke();
-        if (onClicked != null)
-            onClicked -= onReleaseInput.Notify;
+        _onClicked?.Invoke();
+        if (_onClicked != null)
+            _onClicked -= OnReleaseInput.Notify;
     }
 
     private void SetLineCoordinates()
     {
-        lineCoordinates.startingPosition = InitialTouchPosition;
-        lineCoordinates.endPosition = CurrentCursorPosition;
+        LineCoordinates.startingPosition = InitialTouchPosition;
+        LineCoordinates.endPosition = CurrentCursorPosition;
     }
 
     private Vector2 InitialTouchPosition
@@ -70,11 +69,11 @@ public class InputManager : MonoBehaviour
         get
         {
             if (Input.GetMouseButtonDown(0))
-                return mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                return _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                return mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+                return _mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
             else
-                return lineCoordinates.startingPosition;
+                return LineCoordinates.startingPosition;
         }
     }
 
@@ -82,10 +81,10 @@ public class InputManager : MonoBehaviour
     {
         get
         {
-            if (isUsingMouse)
-                return mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            if (_isUsingMouse)
+                return _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             else
-                return mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+                return _mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
         }
     }
 }
