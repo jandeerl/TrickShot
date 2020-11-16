@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour,IEventSubscriber
 
 
     public int Score { get; private set; }
+    public bool GameStarted { get; set; }
 
     private GoalObject goal;
 
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour,IEventSubscriber
     {
         _goalObject = Instantiate(goalPrefab);
         goal = _goalObject.GetComponent<GoalObject>();
+        GameStarted = true;
     }
 
 }

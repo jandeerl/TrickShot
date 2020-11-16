@@ -5,10 +5,9 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField]
     private bool _isUsingMouse = true;
+
     public LineCoordinates LineCoordinates { get; set; }
-
     public EventPublisher OnPressingDown { get; set; }
-
     public EventPublisher OnReleaseInput { get; set; }
 
     private Camera _mainCamera;

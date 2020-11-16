@@ -13,6 +13,9 @@ public class DisplayScore : MonoBehaviour
     }
     private void Update()
     {
+        if (manager.GameStarted)
+            textField.enabled = true;
+
         textField.text = (manager.Score).ToString();
     }
 }
